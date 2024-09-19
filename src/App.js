@@ -61,7 +61,7 @@ function App() {
           <h2 className="text-xl font-bold">{name.split('-')[0]} - Phòng 7 - Báo cáo công việc {name.split('-')[1]} {now}.</h2>
           {baoCao.done.length > 0 && (
             <>
-              <h3 className="text-lg font-semibold mt-4">Site tuyendunghay:</h3>
+              <h3 className="text-lg font-semibold mt-4">{name.split('-')[2]}:</h3>
               <ul className="list-disc list-inside space-y-2">
                 {baoCao.done.map((task, index) => (
                   <div key={index} className="text-gray-700">{task}</div>
