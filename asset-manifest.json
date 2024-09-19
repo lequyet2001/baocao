@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/master/static/css/main.34a8b9e0.css",
-    "main.js": "/master/static/js/main.78edefdf.js",
-    "index.html": "/master/index.html",
-    "main.34a8b9e0.css.map": "/master/static/css/main.34a8b9e0.css.map",
-    "main.78edefdf.js.map": "/master/static/js/main.78edefdf.js.map"
+    "main.css": "/baocao/static/css/main.34a8b9e0.css",
+    "main.js": "/baocao/static/js/main.78edefdf.js",
+    "index.html": "/baocao/index.html",
+    "main.34a8b9e0.css.map": "/baocao/static/css/main.34a8b9e0.css.map",
+    "main.78edefdf.js.map": "/baocao/static/js/main.78edefdf.js.map"
   },
   "entrypoints": [
     "static/css/main.34a8b9e0.css",
