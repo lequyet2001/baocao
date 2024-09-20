@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { FiCopy, FiCheck } from "react-icons/fi";
 
 function App() {
   const [congViecDaLam, setCongViecDaLam] = useState('');
@@ -72,15 +73,15 @@ function App() {
         </button>
 
         <div className="bao-cao-output mt-6">
-          <textarea
-            id="baocao-output"
-            readOnly
-            value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
+          <button
+            onClick={copyToClipboard}
+            className="bg-green-500 text-white py-2 px-4 rounded-lg font-bold w-full mt-4"
+          >
+            Sao chép báo cáo
+          </button>
+          <TextSnippetCopier value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
               ${baoCao.done.length > 0 ? `\nCông việc đã làm:\n${baoCao.done.join('\n')}` : ''}
-              ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}
-            `}
-            className="w-full h-40 p-2 border rounded-lg"
-          />
+              ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}`}/>
         </div>
       </div>
     </div>
@@ -88,3 +89,49 @@ function App() {
 }
 
 export default App;
+
+
+const TextSnippetCopier = ({value}) => {
+  const [copied, setCopied] = useState(false);
+  const textSnippet = "This is a sample text snippet that you can copy.";
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6 space-y-4">
+        <h2 className="text-2xl font-bold text-center text-gray-800">Copy Text Snippet</h2>
+        <div className="relative">
+          <textarea
+            className="w-full p-3 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+            rows="3"
+            value={value}
+            readOnly
+            aria-label="Text snippet to copy"
+          />
+          <button
+            onClick={copyToClipboard}
+            className={`absolute right-2 top-2 p-2 rounded-md transition-colors ${
+              copied ? "bg-green-500 text-white" : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+            aria-label="Copy to clipboard"
+          >
+            {copied ? <FiCheck className="w-5 h-5" /> : <FiCopy className="w-5 h-5" />}
+          </button>
+        </div>
+        {copied && (
+          <p className="text-green-600 text-center font-medium">Copied to clipboard!</p>
+        )}
+        <p className="text-sm text-gray-600 text-center">
+          Click the copy button to copy the text snippet to your clipboard.
+        </p>
+      </div>
+    </div>
+  );
+};
+
