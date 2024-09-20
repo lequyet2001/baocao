@@ -59,7 +59,7 @@ function App() {
         </div>
 
         <button
-          onClick={()=>{taoBaoCao;copyToClipboard}}
+          onClick={() => { taoBaoCao(); copyToClipboard(); }}
           className="bg-blue-500 text-white py-2 px-4 rounded-lg font-bold w-full "
         >
           Tạo báo cáo
