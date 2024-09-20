@@ -64,8 +64,8 @@ function App() {
         </button>
         <div className="bao-cao-output mt-6">
           <TextSnippetCopier value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
-              ${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.join('\n- ')}` : ''}
-              ${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.join('\n- ')}` : ''}`}/>
+  ${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.map(e => `- ${e}`).join('\n')}` : ''}
+  ${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(e => `- ${e}`).join('\n')}` : ''}`}/>
         </div>
       </div>
     </div>
