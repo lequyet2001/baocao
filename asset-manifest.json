@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/baocao/static/css/main.34a8b9e0.css",
-    "main.js": "/baocao/static/js/main.941dbcfa.js",
+    "main.css": "/baocao/static/css/main.06b72490.css",
+    "main.js": "/baocao/static/js/main.8af2dc3e.js",
     "index.html": "/baocao/index.html",
-    "main.34a8b9e0.css.map": "/baocao/static/css/main.34a8b9e0.css.map",
-    "main.941dbcfa.js.map": "/baocao/static/js/main.941dbcfa.js.map"
+    "main.06b72490.css.map": "/baocao/static/css/main.06b72490.css.map",
+    "main.8af2dc3e.js.map": "/baocao/static/js/main.8af2dc3e.js.map"
   },
   "entrypoints": [
-    "static/css/main.34a8b9e0.css",
-    "static/js/main.941dbcfa.js"
+    "static/css/main.06b72490.css",
+    "static/js/main.8af2dc3e.js"
   ]
 }
