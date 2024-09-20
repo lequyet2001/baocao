@@ -16,7 +16,7 @@ function App() {
   };
 
   const copyToClipboard = () => {
-    const reportContent = document.querySelector('#baocao').innerText;
+    const reportContent = document.getElementById('#baocao').innerHTML;
     if(navigator.clipboard ) {
       navigator.clipboard.writeText(reportContent).then(() => {
         alert('Báo cáo đã được sao chép vào clipboard!');
