@@ -16,24 +16,12 @@ function App() {
   };
 
   const copyToClipboard = () => {
-    const reportContent = `${name.split('-')[0]} - Phòng 7 - Báo cáo công việc ${name.split('-')[1]} ${now}.\n\n${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.map(task => `- ${task}`).join('\n')}\n\n` : ''}${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(task => `- ${task}`).join('\n')}` : ''}`;
-    // if (navigator.clipboard) {
-      navigator.clipboard.writeText(reportContent).then(() => {
-        console.log(reportContent)
-        alert('Báo cáo đã được sao chép vào clipboard!');
-      }).catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-    // }else{
-    //   const textArea = document.createElement('textarea');
-    //   textArea.value = reportContent;
-    //   document.body.appendChild(textArea);
-    //   textArea.focus();
-    //   textArea.select();
-    //   document.execCommand('copy');
-    //   document.body.removeChild(textArea);
-    //   alert('Báo cáo đã được sao chép vào clipboard!');
-    // }
+    const reportContent = document.getElementById('baocao-output').value;
+    navigator.clipboard.writeText(reportContent).then(() => {
+      alert('Báo cáo đã được sao chép vào clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
   };
 
   const handleReportCreation = () => {
@@ -83,32 +71,16 @@ function App() {
           Tạo báo cáo
         </button>
 
-        <div className="bao-cao-output mt-6" id='baocao'>
-          {name && (
-            <h2 className="text-xl font-bold">
-              {name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc {name.split('-')[1] || ''} {now}.
-            </h2>
-          )}
-          {baoCao.done.length > 0 && (
-            <>
-              <h3 className="text-lg font-semibold mt-4">{name.split('-')[2] || 'Công việc đã làm'}:</h3>
-              <ul className="list-disc list-inside space-y-2">
-                {baoCao.done.map((task, index) => (
-                  <li key={index} className="text-gray-700">{task}</li>
-                ))}
-              </ul>
-            </>
-          )}
-          {baoCao.upcoming.length > 0 && (
-            <>
-              <h3 className="text-lg font-semibold mt-4">Dự kiến:</h3>
-              <ul className="list-disc list-inside space-y-2">
-                {baoCao.upcoming.map((task, index) => (
-                  <li key={index} className="text-gray-700">- {task}</li>
-                ))}
-              </ul>
-            </>
-          )}
+        <div className="bao-cao-output mt-6">
+          <textarea
+            id="baocao-output"
+            readOnly
+            value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
+              ${baoCao.done.length > 0 ? `\nCông việc đã làm:\n${baoCao.done.join('\n')}` : ''}
+              ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}
+            `}
+            className="w-full h-40 p-2 border rounded-lg"
+          />
         </div>
       </div>
     </div>
