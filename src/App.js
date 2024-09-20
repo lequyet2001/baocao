@@ -59,18 +59,12 @@ function App() {
         </div>
 
         <button
-          onClick={taoBaoCao}
+          onClick={()=>{taoBaoCao;copyToClipboard}}
           className="bg-blue-500 text-white py-2 px-4 rounded-lg font-bold w-full "
         >
           Tạo báo cáo
         </button>
         
-        <button
-          onClick={copyToClipboard}
-          className="bg-green-500 text-white py-2 px-4 rounded-lg font-bold w-full mt-4"
-        >
-          Sao chép báo cáo
-        </button>
 
         <div className="bao-cao-output mt-6">
           <h2 className="text-xl font-bold">{name.split('-')[0]} - Phòng 7 - Báo cáo công việc {name.split('-')[1]} {now}.</h2>
