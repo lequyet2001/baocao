@@ -62,9 +62,7 @@ function App() {
         >
           Tạo báo cáo
         </button>
-
         <div className="bao-cao-output mt-6">
-       
           <TextSnippetCopier value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
               ${baoCao.done.length > 0 ? `\nCông việc đã làm:\n${baoCao.done.join('\n')}` : ''}
               ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}`}/>
@@ -88,7 +86,6 @@ const TextSnippetCopier = ({value}) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6 space-y-4">
         <h2 className="text-2xl font-bold text-center text-gray-800">Copy Text Snippet</h2>
         <div className="relative">
@@ -116,7 +113,6 @@ const TextSnippetCopier = ({value}) => {
           Click the copy button to copy the text snippet to your clipboard.
         </p>
       </div>
-    </div>
   );
 };
 
