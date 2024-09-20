@@ -16,18 +16,9 @@ function App() {
     setBaoCao({ done: doneTasks, upcoming: upcomingTasks });
   };
 
-  const copyToClipboard = () => {
-    const reportContent = document.getElementById('baocao-output').value;
-    navigator.clipboard.writeText(reportContent).then(() => {
-      alert('Báo cáo đã được sao chép vào clipboard!');
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
-  };
 
   const handleReportCreation = () => {
     taoBaoCao();
-    copyToClipboard();
   };
 
   return (
@@ -73,12 +64,7 @@ function App() {
         </button>
 
         <div className="bao-cao-output mt-6">
-          <button
-            onClick={copyToClipboard}
-            className="bg-green-500 text-white py-2 px-4 rounded-lg font-bold w-full mt-4"
-          >
-            Sao chép báo cáo
-          </button>
+       
           <TextSnippetCopier value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
               ${baoCao.done.length > 0 ? `\nCông việc đã làm:\n${baoCao.done.join('\n')}` : ''}
               ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}`}/>
@@ -93,7 +79,6 @@ export default App;
 
 const TextSnippetCopier = ({value}) => {
   const [copied, setCopied] = useState(false);
-  const textSnippet = "This is a sample text snippet that you can copy.";
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(value).then(() => {
