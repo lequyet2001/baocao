@@ -19,6 +19,7 @@ function App() {
     const reportContent = `${name.split('-')[0]} - Phòng 7 - Báo cáo công việc ${name.split('-')[1]} ${now}.\n\n${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.map(task => `- ${task}`).join('\n')}\n\n` : ''}${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(task => `- ${task}`).join('\n')}` : ''}`;
     // if (navigator.clipboard) {
       navigator.clipboard.writeText(reportContent).then(() => {
+        console.log(reportContent)
         alert('Báo cáo đã được sao chép vào clipboard!');
       }).catch(err => {
         console.error('Failed to copy: ', err);
@@ -103,7 +104,7 @@ function App() {
               <h3 className="text-lg font-semibold mt-4">Dự kiến:</h3>
               <ul className="list-disc list-inside space-y-2">
                 {baoCao.upcoming.map((task, index) => (
-                  <div key={index} className="text-gray-700">- {task}</div>
+                  <li key={index} className="text-gray-700">- {task}</li>
                 ))}
               </ul>
             </>
