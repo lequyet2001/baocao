@@ -13,6 +13,14 @@ function App() {
     
     setBaoCao({ done: doneTasks, upcoming: upcomingTasks });
   };
+  const copyToClipboard = () => {
+    const reportContent = document.querySelector('.bao-cao-output').innerText;
+    navigator.clipboard.writeText(reportContent).then(() => {
+      alert('Báo cáo đã được sao chép vào clipboard!');
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
@@ -55,6 +63,13 @@ function App() {
           className="bg-blue-500 text-white py-2 px-4 rounded-lg font-bold w-full "
         >
           Tạo báo cáo
+        </button>
+        
+        <button
+          onClick={copyToClipboard}
+          className="bg-green-500 text-white py-2 px-4 rounded-lg font-bold w-full mt-4"
+        >
+          Sao chép báo cáo
         </button>
 
         <div className="bao-cao-output mt-6">
