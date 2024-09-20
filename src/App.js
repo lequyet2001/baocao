@@ -64,8 +64,8 @@ function App() {
         </button>
         <div className="bao-cao-output mt-6">
           <TextSnippetCopier value={`${name && `${name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc ${name.split('-')[1] || ''} ${now}.`}
-              ${baoCao.done.length > 0 ? `\nCông việc đã làm:\n${baoCao.done.join('\n')}` : ''}
-              ${baoCao.upcoming.length > 0 ? `\nDự kiến:\n${baoCao.upcoming.join('\n')}` : ''}`}/>
+              ${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.join('\n- ')}` : ''}
+              ${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.join('\n- ')}` : ''}`}/>
         </div>
       </div>
     </div>
@@ -87,7 +87,6 @@ const TextSnippetCopier = ({value}) => {
 
   return (
       <div className="max-w-md w-full bg-white rounded-lg shadow-md p-6 space-y-4">
-        <h2 className="text-2xl font-bold text-center text-gray-800">Copy Text Snippet</h2>
         <div className="relative">
           <textarea
             className="w-full p-3 text-gray-700 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
