@@ -3,23 +3,32 @@ import React, { useState } from 'react';
 function App() {
   const [congViecDaLam, setCongViecDaLam] = useState('');
   const [congViecDuKien, setCongViecDuKien] = useState('');
-  const [ name, setName] = useState('');
+  const [name, setName] = useState('');
   const [baoCao, setBaoCao] = useState({ done: [], upcoming: [] });
   const date = new Date();
   const now = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+
   const taoBaoCao = () => {
     const doneTasks = congViecDaLam.split('\n').filter(item => item.trim() !== '');
     const upcomingTasks = congViecDuKien.split('\n').filter(item => item.trim() !== '');
     
     setBaoCao({ done: doneTasks, upcoming: upcomingTasks });
   };
+
   const copyToClipboard = () => {
-    const reportContent = document.querySelector('.bao-cao-output').innerText;
-    navigator.clipboard.writeText(reportContent).then(() => {
-      alert('Báo cáo đã được sao chép vào clipboard!');
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
+    const reportContent = document.querySelector('#baocao').innerText;
+    if(navigator.clipboard ) {
+      navigator.clipboard.writeText(reportContent).then(() => {
+        alert('Báo cáo đã được sao chép vào clipboard!');
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+  };
+
+  const handleReportCreation = () => {
+    taoBaoCao();
+    copyToClipboard();
   };
 
   return (
@@ -46,7 +55,6 @@ function App() {
               className="w-full p-2 border rounded-lg"
             />
           </div>
-
           <div>
             <label className="block font-medium">Dự kiến công việc:</label>
             <textarea
@@ -59,21 +67,24 @@ function App() {
         </div>
 
         <button
-          onClick={() => { taoBaoCao(); copyToClipboard(); }}
-          className="bg-blue-500 text-white py-2 px-4 rounded-lg font-bold w-full "
+          onClick={handleReportCreation}
+          className="bg-blue-500 text-white py-2 px-4 rounded-lg font-bold w-full"
         >
           Tạo báo cáo
         </button>
-        
 
-        <div className="bao-cao-output mt-6">
-          <h2 className="text-xl font-bold">{name.split('-')[0]} - Phòng 7 - Báo cáo công việc {name.split('-')[1]} {now}.</h2>
+        <div className="bao-cao-output mt-6" id='baocao'>
+          {name && (
+            <h2 className="text-xl font-bold">
+              {name.split('-')[0] || ''} - Phòng 7 - Báo cáo công việc {name.split('-')[1] || ''} {now}.
+            </h2>
+          )}
           {baoCao.done.length > 0 && (
             <>
-              <h3 className="text-lg font-semibold mt-4">{name.split('-')[2]}:</h3>
+              <h3 className="text-lg font-semibold mt-4">{name.split('-')[2] || 'Công việc đã làm'}:</h3>
               <ul className="list-disc list-inside space-y-2">
                 {baoCao.done.map((task, index) => (
-                  <div key={index} className="text-gray-700">{task}</div>
+                  <li key={index} className="text-gray-700">{task}</li>
                 ))}
               </ul>
             </>
@@ -83,7 +94,7 @@ function App() {
               <h3 className="text-lg font-semibold mt-4">Dự kiến:</h3>
               <ul className="list-disc list-inside space-y-2">
                 {baoCao.upcoming.map((task, index) => (
-                  <div key={index} className="text-gray-700">{task}</div>
+                  <li key={index} className="text-gray-700">{task}</li>
                 ))}
               </ul>
             </>
