@@ -17,13 +17,22 @@ function App() {
 
   const copyToClipboard = () => {
     const reportContent = `${name.split('-')[0]} - Phòng 7 - Báo cáo công việc ${name.split('-')[1]} ${now}.\n\n${baoCao.done.length > 0 ? `Công việc đã làm:\n${baoCao.done.map(task => `- ${task}`).join('\n')}\n\n` : ''}${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(task => `- ${task}`).join('\n')}` : ''}`;
-    if (navigator.clipboard) {
+    // if (navigator.clipboard) {
       navigator.clipboard.writeText(reportContent).then(() => {
         alert('Báo cáo đã được sao chép vào clipboard!');
       }).catch(err => {
         console.error('Failed to copy: ', err);
       });
-    }
+    // }else{
+    //   const textArea = document.createElement('textarea');
+    //   textArea.value = reportContent;
+    //   document.body.appendChild(textArea);
+    //   textArea.focus();
+    //   textArea.select();
+    //   document.execCommand('copy');
+    //   document.body.removeChild(textArea);
+    //   alert('Báo cáo đã được sao chép vào clipboard!');
+    // }
   };
 
   const handleReportCreation = () => {
