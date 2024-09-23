@@ -63,7 +63,7 @@ function App() {
           Tạo báo cáo
         </button>
         <div className="bao-cao-output mt-6">
-          <TextSnippetCopier value={`Lê Hồng Quyết - Phòng 7 - Báo cáo công việc${'\n'}${baoCao.done.length > 0 ? `Site tuyendunghay:\n${baoCao.done.map(e => `- ${e}`).join('\n')}` : ''}${'\n'}${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(e => `- ${e}`).join('\n')}` : ''}`}/>
+          <TextSnippetCopier value={`Lê Hồng Quyết - Phòng 7 - Báo cáo công việc ${name.split('-')[0]} ${now}${'\n'}${baoCao.done.length > 0 ? `Site tuyendunghay:\n${baoCao.done.map(e => `- ${e}`).join('\n')}` : ''}${'\n'}${baoCao.upcoming.length > 0 ? `Dự kiến:\n${baoCao.upcoming.map(e => `- ${e}`).join('\n')}` : ''}`}/>
         </div>
       </div>
     </div>
