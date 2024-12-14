@@ -16,9 +16,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "npm dev",
+    "build": "npm build",
+    "start": "npm start",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
