@@ -25,6 +25,7 @@ function App() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="App p-6 max-w-lg mx-auto bg-white rounded-xl space-y-6 shadow-2xl">
         <h1 className="text-2xl font-bold mb-4 text-center">Tạo báo cáo công việc</h1>
+        <h1 className="text-2xl font-bold mb-4 text-center">Tạo báo cáo công việc2</h1>
 
         <div className="form-group space-y-4">
           <div>
