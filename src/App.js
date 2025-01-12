@@ -26,7 +26,7 @@ function App() {
       <div className="App p-6 max-w-lg mx-auto bg-white rounded-xl space-y-6 shadow-2xl">
         <h1 className="text-2xl font-bold mb-4 text-center">Tạo báo cáo công việc</h1>
         <h1 className="text-2xl font-bold mb-4 text-center">Tạo báo cáo công việc2</h1>
-
+        <a href="/baocao/1">Detail</a>
         <div className="form-group space-y-4">
           <div>
             <label className="block font-medium">Tên:</label>
