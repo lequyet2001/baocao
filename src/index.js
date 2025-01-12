@@ -9,6 +9,10 @@ const router =createBrowserRouter([
     path:'/baocao',
     element:<App/>,
     // errorElement:<div>Not found</div>
+  },
+  {
+    path:'/baocao/:id',
+    element:<div>Detail</div>,
   }
 ])
 
